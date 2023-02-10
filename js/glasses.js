@@ -24,8 +24,27 @@ products.push(
     );
 console.log(products);
 
+//Skapa element till cart
+    const cartModal = document.createElement('div');
+    const cartModalDialog = document.createElement('div');
+    const cartModalContent = document.createElement('div');
+    const cartModalHeader = document.createElement('div');
+    const cartModalTitle = document.createElement('h1');
+    const cartButtonX = document.createElement('button');
+    const cartModalBody = document.createElement('div');
+    const cartModalBodyHeader = document.createElement('div');
+    const cartModalBodyImage = document.createElement('img');
+    const cartModalBodyFooter = document.createElement('div');
+    const cartModalBodyFooterPrice = document.createElement('div');
+    const cartModalBodyFooterButtons = document.createElement('div');
+    const cartModalButtonIncQty = document.createElement('button');
+    const cartModalButtonDecQty = document.createElement('button');
+    const cartModalBodyFooterQty = document.createElement('div');
+
 let modalId = 1;
 let productIndex = 0;
+let currentId = 0;
+let qty = 1;
 
 getProducts();
 
@@ -98,13 +117,23 @@ function getProducts() {
                 let product = products.find(i => i.id === imageModal.id);
                 console.log(product);
 
-                cart.push(product);
+                if (cart.find(i => i.id === imageModal.id)) {
+                    console.log("Produkt finns");
+                }
+                else {
+                    currentId = product.id;
+                    console.log(currentId);
+                    cart.push(product);
+                    productIndex = cart.indexOf(product);
+                    console.log(productIndex);
+                    
+                    let newCartModalBody = cartModalBody.cloneNode(true);
+                    cartModalBody.insertAdjacentElement("afterend", newCartModalBody);
+                }
                 console.log(cart);
 
-                productIndex = cart.indexOf(product);
-                console.log(productIndex);
-
                 getCart();
+
             };
         
             //Lägg till element i DOM
@@ -121,24 +150,6 @@ function getProducts() {
 }
 
 function getCart() {
-
-    //Skapa element
-    const cartModal = document.createElement('div');
-    const cartModalDialog = document.createElement('div');
-    const cartModalContent = document.createElement('div');
-    const cartModalHeader = document.createElement('div');
-    const cartModalTitle = document.createElement('h1');
-    const cartButtonX = document.createElement('button');
-    const cartModalBody = document.createElement('div');
-    const cartModalBodyHeader = document.createElement('div');
-    const cartModalBodyImage = document.createElement('img');
-    const cartModalBodyFooter = document.createElement('div');
-    const cartModalBodyFooterPrice = document.createElement('div');
-    const cartModalBodyFooterButtons = document.createElement('div');
-    const cartModalButtonIncQty = document.createElement('button');
-    const cartModalButtonDecQty = document.createElement('button');
-    const cartModalBodyFooterQty = document.createElement('div');
-
     //Styla element
     cartModal.classList.add("modal", "fade");
     cartModalDialog.classList.add("modal-dialog", "modal-dialog-centered");
@@ -178,11 +189,32 @@ function getCart() {
 
     cartModalButtonIncQty.type = "button";
     cartModalButtonIncQty.innerText = "+";
+    cartModalButtonIncQty.id = currentId;
 
     cartModalButtonDecQty.type = "button";
     cartModalButtonDecQty.innerText = "-";
+    cartModalButtonDecQty.id = currentId;
 
-    cartModalBodyFooterQty.innerText = cart[productIndex].qty;
+    cartModalBodyFooterQty.innerText = qty;
+
+    cartModalButtonIncQty.onclick = () => {
+        console.log(currentId);
+        qty++;
+        console.log(qty);
+        getCart();
+    };
+
+    cartModalButtonDecQty.onclick = () => {
+        console.log(currentId);
+        if (qty === 0) {
+            cartModalBodyFooterPrice.innerText = 0;
+        }
+        else {
+            qty--;
+            console.log(qty);
+            getCart();
+        }
+    };
 
     //Lägg till i DOM
     cartModal.append(cartModalDialog);
