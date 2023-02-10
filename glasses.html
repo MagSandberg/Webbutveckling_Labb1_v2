@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>About - VSNVG</title>
+    <title>Glasses - VSNVG</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,10 +19,13 @@
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
         </script>
+
     <!-- Font Awesome -->
     <script defer src="https://kit.fontawesome.com/72c424fccb.js" crossorigin="anonymous"></script>
     <!-- My CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- My JS -->
+    <script defer src="js/glasses.js"></script>
 </head>
 
 <body>
@@ -30,6 +33,11 @@
         <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand" href="index.html">VSNVG</a>
+                <div class="cart-nav">
+                    <a class="navbar-cart" href="#" data-bs-toggle="modal" data-bs-target="#cart">
+                        <i class="fa-solid fa-cart-shopping cart-nav"></i>
+                    </a>
+                </div>
                 <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -38,7 +46,7 @@
                 <div class="collapse navbar-collapse" id="collapsibleNavId">
                     <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html" aria-current="page">Home <span
+                            <a class="nav-link active" href="index.html" aria-current="page">Home <span
                                     class="visually-hidden">(current)</span></a>
                         </li>
                         <li class="nav-item dropdown">
@@ -50,10 +58,15 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="about.html">About us</a>
+                            <a class="nav-link" href="about.html">About us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -61,27 +74,9 @@
         </nav>
     </header>
     <main>
-        <div class="container-main-about p-3">
-            <div class="grid-section-1-about">
-                <div class="grid-section-1-item-about">
-                    <h2 class="h2-about">It's a dogs world</h2>
-                    <p>At VSNVG, we believe that work and play can coexist in perfect harmony. After all, why should you have to
-                    choose between a successful career and a fulfilling life?</p>
-                    <p>So if you're looking for a place to unleash your inner rebel and make a real impact, look no further. Join us and let's
-                    see where this wild ride takes us.</p>
-                </div>
-            </div>
-            <div class="grid-section-2-about">
-                <div class="grid-section-2-item bg-dark">
-                    <h3 class="text-warning">Who are we?</h3>
-                    <p class="text-light">Ultimately, the answer to the question of "who we are" is a personal and unique one that may change and evolve over
-                    time.<br />It is a question that each individual must answer for themselves, and it is a journey of self-discovery that is
-                    ongoing.</p>
-                    <button class="btn btn-warning">
-                        The team <span class="badge"><i class="fa-solid fa-user text-dark"></i><i class="fa-solid fa-user text-dark"></i><i class="fa-solid fa-user text-dark"></i></span>
-                    </button>
-                </div>
-            </div>
+        <div class="container-main p-3">
+            <div id="productsGlasses" class="products"></div>
+            <div id="cartList"></div>
         </div>
     </main>
     <footer>
@@ -143,9 +138,7 @@
             </div>
             <div class="grid-footer-item text-center bg-light">
                 <p class="copyright">
-                    Copyright &copy;
-                    <script>document.write(new Date().getFullYear());</script>
-                    All rights reserved | A website by
+                    Copyright &copy; 2023 All rights reserved | A website by
                     <span style="color:darkgoldenrod">Magnus</span>
                 </p>
             </div>

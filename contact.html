@@ -2,11 +2,10 @@
 <html lang="en">
 
 <head>
-    <title>Home - Lab1</title>
+    <title>Contact - VSNVG</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -23,6 +22,8 @@
     <script defer src="https://kit.fontawesome.com/72c424fccb.js" crossorigin="anonymous"></script>
     <!-- My CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- My JS -->
+    <script defer src="js/weather.js"></script>
 </head>
 
 <body>
@@ -62,29 +63,27 @@
     </header>
     <main>
         <div class="container-main-about p-3">
-            <div class="grid-section-1-about">
-                <div class="grid-section-1-item-about">
-                    <h2 class="h2-about">It's a dogs world</h2>
-                    <p>At VSNVG, we believe that work and play can coexist in perfect harmony. After all, why should you
-                        have to
-                        choose between a successful career and a fulfilling life?.</p>
-                    <p>So if you're looking for a place to unleash your inner rebel and make a real impact, look no
-                        further. Join us and let's
-                        see where this wild ride takes us.</p>
+            <div class="grid-section-2-contact grid-footer-item">
+                <div class="grid-section-2-item-contact">
+                    <ul class="contact-text">
+                        <li class="phone">(213) 765-4321</li>
+                        <li class="mail">contact@vsnvg.com</li>
+                        <li class="home">www.vsnvg.com</li>
+                    </ul>
                 </div>
             </div>
-            <div class="grid-section-2-about">
-                <div class="grid-section-2-item bg-dark">
-                    <h3 class="text-warning">Who are we?</h3>
-                    <p class="text-light">Ultimately, the answer to the question of "who we are" is a personal and
-                        unique one that may change and evolve over
-                        time.<br />It is a question that each individual must answer for themselves, and it is a journey
-                        of self-discovery that is
-                        ongoing.</p>
-                    <button class="btn btn-warning">
-                        The team <span class="badge"><i class="fa-solid fa-user text-dark"></i><i
-                                class="fa-solid fa-user text-dark"></i><i class="fa-solid fa-user text-dark"></i></span>
-                    </button>
+            <div class="grid-section-1-contact">
+                <div class="grid-section-1-item-contact bg-dark">
+                    <h2 class="text-light">Visit us</h2>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10608.836480266566!2d-122.42946029629329!3d37.765989575001726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7e1e23e41645%3A0xb675b17fd107242f!2sSafeway!5e0!3m2!1ssv!2sse!4v1675783308158!5m2!1ssv!2sse"
+                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="grid-section-1-contact text-center bg-light p-3">
+                    <h4 class="text-dark">Time for shades!</h4>
+                    <ul id="weather" class="list-group">
+                    </ul>
                 </div>
             </div>
         </div>
@@ -149,8 +148,9 @@
             <div class="grid-footer-item text-center bg-light">
                 <p class="copyright">
                     Copyright &copy;
-                    <script>document.write(new Date().getFullYear());</script> All rights reserved | This website is
-                    made by Magnus
+                    <script>document.write(new Date().getFullYear());</script>
+                    All rights reserved | A website by
+                    <span style="color:darkgoldenrod">Magnus</span>
                 </p>
             </div>
         </div>
