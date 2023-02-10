@@ -14,32 +14,18 @@ const productsGlasses = document.querySelector('#productsGlasses');
 const cart = [];
 const cartList = document.querySelector('#cartList');
 
+const cartModalBody = document.createElement('div');
+const cartModalList = document.createElement('ul');
+
 products.push(
-    new Product("1", "VSNVG Visionary", "../img/glasses/glasses_1.jpg", "$49", "1"),
-    new Product("2", "VSNVG Optix", "../img/glasses/glasses_2.jpg", "$129", "1"),
-    new Product("3", "VSNVG Eclipse", "../img/glasses/glasses_3.jpg", "$99", "1"),
-    new Product("4", "VSNVG Flare", "../img/glasses/glasses_4.jpg", "$89", "1"),
-    new Product("5", "VSNVG Mirador", "../img/glasses/glasses_5.jpg", "$79", "1"),
-    new Product("6", "VSNVG Illuminate", "../img/glasses/glasses_6.jpg", "$109", "1")
+    new Product("1", "VSNVG Visionary", "../img/glasses/glasses_1.jpg", "49", "1"),
+    new Product("2", "VSNVG Optix", "../img/glasses/glasses_2.jpg", "129", "1"),
+    new Product("3", "VSNVG Eclipse", "../img/glasses/glasses_3.jpg", "99", "1"),
+    new Product("4", "VSNVG Flare", "../img/glasses/glasses_4.jpg", "89", "1"),
+    new Product("5", "VSNVG Mirador", "../img/glasses/glasses_5.jpg", "79", "1"),
+    new Product("6", "VSNVG Illuminate", "../img/glasses/glasses_6.jpg", "109", "1")
     );
 console.log(products);
-
-//Skapa element till cart
-    const cartModal = document.createElement('div');
-    const cartModalDialog = document.createElement('div');
-    const cartModalContent = document.createElement('div');
-    const cartModalHeader = document.createElement('div');
-    const cartModalTitle = document.createElement('h1');
-    const cartButtonX = document.createElement('button');
-    const cartModalBody = document.createElement('div');
-    const cartModalBodyHeader = document.createElement('div');
-    const cartModalBodyImage = document.createElement('img');
-    const cartModalBodyFooter = document.createElement('div');
-    const cartModalBodyFooterPrice = document.createElement('div');
-    const cartModalBodyFooterButtons = document.createElement('div');
-    const cartModalButtonIncQty = document.createElement('button');
-    const cartModalButtonDecQty = document.createElement('button');
-    const cartModalBodyFooterQty = document.createElement('div');
 
 let modalId = 1;
 let productIndex = 0;
@@ -47,6 +33,7 @@ let currentId = 0;
 let qty = 1;
 
 getProducts();
+getCart();
 
 function getProducts() {
 
@@ -103,7 +90,7 @@ function getProducts() {
             imageModal.id = item.id
             imageModal.alt = "";
 
-            priceModal.innerText = item.price;
+            priceModal.innerText = "$ " + item.price;
 
             buttonAdd.type = "button";
             buttonAdd.innerText = "Add to cart";
@@ -121,19 +108,44 @@ function getProducts() {
                     console.log("Produkt finns");
                 }
                 else {
-                    currentId = product.id;
-                    console.log(currentId);
                     cart.push(product);
-                    productIndex = cart.indexOf(product);
-                    console.log(productIndex);
-                    
-                    let newCartModalBody = cartModalBody.cloneNode(true);
-                    cartModalBody.insertAdjacentElement("afterend", newCartModalBody);
+
+                    const cartModalWrapper = document.createElement('div');
+                    const cartModalTitle = document.createElement('div');
+                    const cartModalImage = document.createElement('img');
+                    const cartModalPrice = document.createElement('div');
+                    const cartButtonIncrease = document.createElement('button');
+                    const cartButtonDecrease = document.createElement('button');
+                    const cartModalSpacer = document.createElement('hr');
+
+                    cartModalWrapper.classList.add("cart-modal-text");
+                    cartButtonIncrease.classList.add("btn", "btn-dark", "text-light");
+                    cartButtonDecrease.classList.add("btn", "btn-secondary", "text-light");
+
+                    cartModalTitle.innerText = product.title;
+                    cartModalImage.src = product.img;
+                    cartModalImage.alt = "Glasses";
+                    cartModalPrice.innerText = "$ " + product.price + " | " + "Qty: " + product.qty;
+                    cartButtonIncrease.type = "button;";
+                    cartButtonIncrease.id = product.id
+                    cartButtonIncrease.innerText = "+";
+                    cartButtonDecrease.type = "button;";
+                    cartButtonDecrease.id = product.id
+                    cartButtonDecrease.innerText = "-";
+
+                    cartModalWrapper.append(
+                        cartModalTitle, 
+                        cartModalImage,
+                        cartModalPrice, 
+                        cartButtonIncrease, 
+                        cartButtonDecrease,
+                        cartModalSpacer
+                    );
+                    cartModalBody.appendChild(cartModalWrapper);
+
+                    getCart();
                 }
                 console.log(cart);
-
-                getCart();
-
             };
         
             //Lägg till element i DOM
@@ -150,6 +162,15 @@ function getProducts() {
 }
 
 function getCart() {
+
+    //Skapa element till cart
+    const cartModal = document.createElement('div');
+    const cartModalDialog = document.createElement('div');
+    const cartModalContent = document.createElement('div');
+    const cartModalHeader = document.createElement('div');
+    const cartModalTitle = document.createElement('h1');
+    const cartButtonX = document.createElement('button');
+
     //Styla element
     cartModal.classList.add("modal", "fade");
     cartModalDialog.classList.add("modal-dialog", "modal-dialog-centered");
@@ -158,14 +179,7 @@ function getCart() {
     cartModalTitle.classList.add("modal-title", "fs-5");
     cartButtonX.classList.add("btn-close");
     cartModalBody.classList.add("modal-body");
-    cartModalBodyHeader.classList.add("product-title", "bg-dark", "text-light");
-    cartModalBodyImage.classList.add("cover");
-    cartModalBodyFooter.classList.add("products-bottom", "bg-dark", "p-2");
-    cartModalBodyFooterPrice.classList.add("product-price", "text-light");
-    cartModalBodyFooterButtons.classList.add("product-buttons");
-    cartModalButtonIncQty.classList.add("btn", "btn-light");
-    cartModalButtonDecQty.classList.add("btn", "btn-light");
-    cartModalBodyFooterQty.classList.add("product-total", "text-light");
+    cartModalList.classList.add('modal-ul');
 
     //Innehåll i element
     cartModal.id = "cart";
@@ -180,59 +194,17 @@ function getCart() {
     cartButtonX.setAttribute("data-bs-dismiss", "modal");
     cartButtonX.ariaLabel = "Close";
 
-    cartModalBodyHeader.innerText = cart[productIndex].title;
-
-    cartModalBodyImage.src = cart[productIndex].img;
-    cartModalBodyImage.alt = "";
-
-    cartModalBodyFooterPrice.innerText = cart[productIndex].price;
-
-    cartModalButtonIncQty.type = "button";
-    cartModalButtonIncQty.innerText = "+";
-    cartModalButtonIncQty.id = currentId;
-
-    cartModalButtonDecQty.type = "button";
-    cartModalButtonDecQty.innerText = "-";
-    cartModalButtonDecQty.id = currentId;
-
-    cartModalBodyFooterQty.innerText = qty;
-
-    cartModalButtonIncQty.onclick = () => {
-        console.log(currentId);
-        qty++;
-        console.log(qty);
-        getCart();
-    };
-
-    cartModalButtonDecQty.onclick = () => {
-        console.log(currentId);
-        if (qty === 0) {
-            cartModalBodyFooterPrice.innerText = 0;
-        }
-        else {
-            qty--;
-            console.log(qty);
-            getCart();
-        }
-    };
+    const cartEmpty = "Too much sun, buy some shades!";
 
     //Lägg till i DOM
-    cartModal.append(cartModalDialog);
-    cartModalDialog.append(cartModalContent);
-    cartModalContent.append(cartModalHeader, cartModalBody);
-    cartModalHeader.append(cartModalTitle, cartButtonX);
-    cartModalBody.append(
-        cartModalBodyHeader, 
-        cartModalBodyImage, 
-        cartModalBodyFooter);
-    cartModalBodyFooterButtons.append(
-        cartModalButtonIncQty, 
-        cartModalButtonDecQty);
-    cartModalBodyFooter.append(
-        cartModalBodyFooterPrice,
-        cartModalBodyFooterButtons,
-        cartModalBodyFooterQty);
-    cartList.append(cartModal);
+    if (cart.length === 0) {
+        cartModal.append(cartModalDialog);
+        cartModalDialog.append(cartModalContent);
+        cartModalContent.append(cartModalHeader, cartModalBody);
+        cartModalHeader.append(cartModalTitle, cartButtonX);
+        // cartModalBody.append(cartEmpty);
+        cartList.append(cartModal);
+    }
 
 }
 /* Modal Cart 

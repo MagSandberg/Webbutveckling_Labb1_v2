@@ -36,6 +36,11 @@ p {
     text-align: left;
 }
 
+.cart-modal-text {
+    font-size: 22px;
+    line-height: 40px;
+}
+
 hr {
     margin-top: 50px;
 }
