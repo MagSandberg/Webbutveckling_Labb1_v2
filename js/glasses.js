@@ -15,7 +15,10 @@ const cart = [];
 const cartList = document.querySelector('#cartList');
 
 const cartModalBody = document.createElement('div');
-const cartModalList = document.createElement('ul');
+const cartButtonIncrease = document.createElement('button');
+const cartButtonDecrease = document.createElement('button');
+
+cartButtonIncrease.addEventListener('click', increaseQty());
 
 products.push(
     new Product("1", "VSNVG Visionary", "../img/glasses/glasses_1.jpg", "49", "1"),
@@ -114,8 +117,7 @@ function getProducts() {
                     const cartModalTitle = document.createElement('div');
                     const cartModalImage = document.createElement('img');
                     const cartModalPrice = document.createElement('div');
-                    const cartButtonIncrease = document.createElement('button');
-                    const cartButtonDecrease = document.createElement('button');
+                    const cartModalQty = document.createElement('div');
                     const cartModalSpacer = document.createElement('hr');
 
                     cartModalWrapper.classList.add("cart-modal-text");
@@ -125,18 +127,22 @@ function getProducts() {
                     cartModalTitle.innerText = product.title;
                     cartModalImage.src = product.img;
                     cartModalImage.alt = "Glasses";
-                    cartModalPrice.innerText = "$ " + product.price + " | " + "Qty: " + product.qty;
-                    cartButtonIncrease.type = "button;";
-                    cartButtonIncrease.id = product.id
+                    cartModalPrice.innerText = "$ " + product.price;
+                    cartModalQty.innerText = "Qty: " + product.qty;
+                    cartModalQty.id = product.id;
+                    cartButtonIncrease.type = "button";
                     cartButtonIncrease.innerText = "+";
-                    cartButtonDecrease.type = "button;";
+                    cartButtonDecrease.type = "button";
                     cartButtonDecrease.id = product.id
                     cartButtonDecrease.innerText = "-";
+
+                    //Sätta upp event på element
 
                     cartModalWrapper.append(
                         cartModalTitle, 
                         cartModalImage,
-                        cartModalPrice, 
+                        cartModalPrice,
+                        cartModalQty, 
                         cartButtonIncrease, 
                         cartButtonDecrease,
                         cartModalSpacer
@@ -179,7 +185,6 @@ function getCart() {
     cartModalTitle.classList.add("modal-title", "fs-5");
     cartButtonX.classList.add("btn-close");
     cartModalBody.classList.add("modal-body");
-    cartModalList.classList.add('modal-ul');
 
     //Innehåll i element
     cartModal.id = "cart";
@@ -207,38 +212,9 @@ function getCart() {
     }
 
 }
-/* Modal Cart 
-    <div class="modal fade" id="cart" tabindex="-1" aria-labelledby="cart" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header bg-light">
-                    <h1 class="modal-title fs-5" id="modal-label-cart">Your Cart</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="product-title bg-dark text-light">VSNVG Eclipse</div>
-                    <img src="img/glasses/glasses_1.jpg" alt="">
-                    <div class="products-bottom p-2 bg-dark">
-                        <div class="product-price text-light">$47.99</div>
-                        <div class="product-buttons">
-                            <button type="button" class="btn btn-light">+</button>
-                            <button type="button" class="btn btn-light">-</button>
-                        </div>
-                        <div class="product-total text-light">Qty: 1</div>  
-                    </div>
-                </div>
-                <div class="modal-body-img">
-                    <div class="product-title bg-dark text-light">VSNVG Flare</div>
-                    <img src="img/glasses/glasses_2.jpg" alt="">
-                    <div class="products-bottom p-2 bg-dark">
-                        <div class="product-price text-light">$47.99</div>
-                        <div class="product-buttons">
-                            <button type="button" class="btn btn-light">+</button>
-                            <button type="button" class="btn btn-light">-</button>
-                        </div>
-                        <div class="product-total text-light">Qty: 1</div>
-                    </div>
-                </div>
-         </div>
-    </div>*/
 
+function increaseQty() {
+
+    console.log("Hello world!");
+
+}
