@@ -21,12 +21,12 @@ const cartButtonDecrease = document.createElement('button');
 cartButtonIncrease.addEventListener('click', increaseQty());
 
 products.push(
-    new Product("1", "VSNVG Visionary", "../img/glasses/glasses_1.jpg", "49", "1"),
-    new Product("2", "VSNVG Optix", "../img/glasses/glasses_2.jpg", "129", "1"),
-    new Product("3", "VSNVG Eclipse", "../img/glasses/glasses_3.jpg", "99", "1"),
-    new Product("4", "VSNVG Flare", "../img/glasses/glasses_4.jpg", "89", "1"),
-    new Product("5", "VSNVG Mirador", "../img/glasses/glasses_5.jpg", "79", "1"),
-    new Product("6", "VSNVG Illuminate", "../img/glasses/glasses_6.jpg", "109", "1")
+    new Product("1", "VSNVG Visionary", "../img/glasses/glasses_1.webp", "49", "1"),
+    new Product("2", "VSNVG Optix", "../img/glasses/glasses_2.webp", "129", "1"),
+    new Product("3", "VSNVG Eclipse", "../img/glasses/glasses_3.webp", "99", "1"),
+    new Product("4", "VSNVG Flare", "../img/glasses/glasses_4.webp", "89", "1"),
+    new Product("5", "VSNVG Mirador", "../img/glasses/glasses_5.webp", "79", "1"),
+    new Product("6", "VSNVG Illuminate", "../img/glasses/glasses_6.webp", "109", "1")
     );
 console.log(products);
 
@@ -73,7 +73,9 @@ function getProducts() {
         
             //Innehåll i element
             image.src = item.img;
-            image.alt = "";
+            image.alt = item.title;
+            image.width = "100%";
+            image.height = "auto";
             image.setAttribute("data-bs-toggle", "modal");
             image.setAttribute("data-bs-target", "#prod-" + modalId);
 

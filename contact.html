@@ -9,7 +9,7 @@
 
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" media="screen">
     <!-- Bootstrap JavaScript Libraries -->
     <script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
@@ -21,7 +21,7 @@
     <!-- Font Awesome -->
     <script defer src="https://kit.fontawesome.com/72c424fccb.js" crossorigin="anonymous"></script>
     <!-- My CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" media="screen">
     <!-- My JS -->
     <script defer src="js/weather.js"></script>
 </head>
@@ -30,7 +30,7 @@
     <header>
         <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="index.html">VSNVG</a>
+                <a class="navbar-brand" aria-label="Home page" href="index.html">VSNVG</a>
                 <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -39,7 +39,7 @@
                 <div class="collapse navbar-collapse" id="collapsibleNavId">
                     <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html" aria-current="page">Home <span
+                            <a class="nav-link" href="index.html">Home <span
                                     class="visually-hidden">(current)</span></a>
                         </li>
                         <li class="nav-item dropdown">
@@ -54,7 +54,7 @@
                             <a class="nav-link" href="about.html">About us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="contact.html">Contact</a>
+                            <a class="nav-link active" href="contact.html" aria-current="page">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -76,6 +76,7 @@
                 <div class="grid-section-1-item-contact bg-dark">
                     <h2 class="text-light">Visit us</h2>
                     <iframe
+                        title="Google map"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10608.836480266566!2d-122.42946029629329!3d37.765989575001726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7e1e23e41645%3A0xb675b17fd107242f!2sSafeway!5e0!3m2!1ssv!2sse!4v1675783308158!5m2!1ssv!2sse"
                         width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -132,16 +133,16 @@
                 <div class="grid-footer-item">
                     <h4>Instagram</h4>
                     <div class="footer-insta">
-                        <img src="img/instagram/insta_1.jpg" alt="">
+                        <img src="img/instagram/insta_1.webp" alt="">
                     </div>
                     <div class="footer-insta">
-                        <img src="img/instagram/insta_2.jpg" alt="">
+                        <img src="img/instagram/insta_2.webp" alt="">
                     </div>
                     <div class="footer-insta">
-                        <img src="img/instagram/insta_3.jpg" alt="">
+                        <img src="img/instagram/insta_3.webp" alt="">
                     </div>
                     <div class="footer-insta">
-                        <img src="img/instagram/insta_4.jpg" alt="">
+                        <img src="img/instagram/insta_4.webp" alt="">
                     </div>
                 </div>
             </div>
@@ -149,8 +150,7 @@
                 <p class="copyright">
                     Copyright &copy;
                     <script>document.write(new Date().getFullYear());</script>
-                    All rights reserved | A website by
-                    <span style="color:darkgoldenrod">Magnus</span>
+                    All rights reserved | A website by Magnus
                 </p>
             </div>
         </div>
