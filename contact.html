@@ -32,18 +32,13 @@
     <link rel="preload" href="css/style-min.css" type="text/css" as="style"
         onload="this.onload=null;this.rel='stylesheet';" />
     <!-- My JS -->
-    <script defer src="js/glasses.js"></script>
+    <script defer src="js/weather.js"></script>
     <!-- Preload -->
-    <link rel="preload" as="image" href="img/contact_bg.webp">
+    <link rel="preload" href="img/contact_bg.webp" as="image">
 </head>
 
 <body>
     <header>
-        <div class="cart-nav">
-            <a class="navbar-cart" href="#" data-bs-toggle="modal" data-bs-target="#cart" aria-label="Shopping cart">
-                <i class="fa-solid fa-cart-shopping cart-nav"></i>
-            </a>
-        </div>
         <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand" aria-label="Home page" href="index.html">VSNVG</a>
@@ -62,7 +57,6 @@
                                 aria-haspopup="true" aria-expanded="false">Products</a>
                             <div class="dropdown-menu" aria-labelledby="dropdownId">
                                 <a class="dropdown-item" href="glasses.html">Glasses</a>
-                                <a class="dropdown-item" href="lenses.html">Contact Lenses</a>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -78,9 +72,6 @@
     </header>
     <main>
         <div class="container-main-about p-3">
-            <div class="container-main p-3">
-                <div id="cartList"></div>
-            </div>
             <div class="grid-section-2-contact grid-footer-item">
                 <div class="grid-section-2-item-contact">
                     <ul class="contact-text">

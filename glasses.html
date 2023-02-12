@@ -16,7 +16,6 @@
 
     <!-- Bootstrap CSS v5.2.1 -->
     <link rel="preload" href="css/bootstrap-minified-min.css" type="text/css" as="style" onload="this.onload=null;this.rel='stylesheet';" />
-    <!-- <link href="css/bootstrap-minified-min.css"  rel="stylesheet" media="screen" id="bootstrap-css"> -->
     <!-- Bootstrap JavaScript Libraries -->
     <script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
@@ -29,9 +28,7 @@
     <!-- Font Awesome -->
     <script defer src="https://kit.fontawesome.com/72c424fccb.js" crossorigin="anonymous"></script>
     <!-- My CSS -->
-    <link rel="preload" href="css/style-min.css" type="text/css" as="style"
-        onload="this.onload=null;this.rel='stylesheet';" />
-    <!-- <link rel="stylesheet" href="css/style-min.css" media="screen"> -->
+    <link rel="stylesheet" href="css/style-min.css">
     <!-- My JS -->
     <script defer src="js/glasses.js"></script>
     <!-- Preload -->
@@ -45,12 +42,13 @@
 
 <body>
     <header>
-        <div class="cart-nav">
-            <a class="navbar-cart" href="#" data-bs-toggle="modal" data-bs-target="#cart" aria-label="Shopping cart">
-                <i class="fa-solid fa-cart-shopping cart-nav"></i>
-            </a>
-        </div>
         <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
+            <div class="cart-nav" onclick="getProducts()">
+                <a class="navbar-cart" href="#" data-bs-toggle="modal" data-bs-target="#cart" aria-label="Shopping cart">
+                    <i class="fa-solid fa-cart-shopping cart-nav"></i>
+                </a>
+                <div id="cartBadge" class="cart-badge"></div>
+            </div>
             <div class="container">
                 <a class="navbar-brand" href="index.html">VSNVG</a>
                 <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
@@ -68,7 +66,6 @@
                                 aria-haspopup="true" aria-expanded="false">Products</a>
                             <div class="dropdown-menu" aria-labelledby="dropdownId">
                                 <a class="dropdown-item" href="glasses.html">Glasses</a>
-                                <a class="dropdown-item" href="lenses.html">Contact Lenses</a>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -84,7 +81,7 @@
     </header>
     <main>
         <div class="container-main p-3">
-            <div id="productsGlasses" class="products" style="min-height: 400px;"></div>
+            <div id="productsGlasses" class="products" style="min-height: 500px;"></div>
             <div id="cartList"></div>
         </div>
     </main>
