@@ -7,13 +7,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Preload Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;700&family=Playfair+Display&family=Source+Serif+Pro:ital@1&display=swap"
+        rel="stylesheet">
 
     <!-- Bootstrap CSS v5.2.1 -->
-    <link defer 
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" 
-    rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" 
-    crossorigin="anonymous" media="screen" id="bootstrap-css">
+    <link rel="preload" href="css/bootstrap-minified-min.css" type="text/css" as="style" onload="this.onload=null;this.rel='stylesheet';" />
+    <!-- <link href="css/bootstrap-minified-min.css"  rel="stylesheet" media="screen" id="bootstrap-css"> -->
     <!-- Bootstrap JavaScript Libraries -->
     <script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
@@ -26,7 +29,9 @@
     <!-- Font Awesome -->
     <script defer src="https://kit.fontawesome.com/72c424fccb.js" crossorigin="anonymous"></script>
     <!-- My CSS -->
-    <link rel="stylesheet" href="css/style.css" media="screen">
+    <link rel="preload" href="css/style-min.css" type="text/css" as="style"
+        onload="this.onload=null;this.rel='stylesheet';" />
+    <!-- <link rel="stylesheet" href="css/style-min.css" media="screen"> -->
     <!-- My JS -->
     <script defer src="js/glasses.js"></script>
     <!-- Preload -->
@@ -40,19 +45,23 @@
 
 <body>
     <header>
+        <div class="cart-nav">
+            <a class="navbar-cart" href="#" data-bs-toggle="modal" data-bs-target="#cart" aria-label="Shopping cart">
+                <i class="fa-solid fa-cart-shopping cart-nav"></i>
+            </a>
+        </div>
         <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand" href="index.html">VSNVG</a>
                 <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
                 <div class="collapse navbar-collapse" id="collapsibleNavId">
                     <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" href="index.html" aria-current="page">Home <span
-                                    class="visually-hidden">(current)</span></a>
+                            <a class="nav-link active" href="index.html" aria-current="page">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown"
@@ -68,12 +77,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="contact.html">Contact</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link iconClass" href="#/" data-bs-toggle="modal" data-bs-target="#cart" aria-label="Cart Icon">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                                <div id="cartAmount">2</div>
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -81,7 +84,7 @@
     </header>
     <main>
         <div class="container-main p-3">
-            <div id="productsGlasses" class="products"></div>
+            <div id="productsGlasses" class="products" style="min-height: 400px;"></div>
             <div id="cartList"></div>
         </div>
     </main>

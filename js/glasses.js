@@ -48,7 +48,7 @@ function getProducts() {
             const modalDialog = document.createElement('div');
             const modalContent = document.createElement('div');
             const modalHeader = document.createElement('div');
-            const title = document.createElement('h1');
+            const title = document.createElement('h2');
             const buttonX = document.createElement('button');
             const modalBody = document.createElement('div');
             const imageModal = document.createElement('img');
@@ -63,7 +63,6 @@ function getProducts() {
             modalDialog.classList.add("modal-dialog", "modal-dialog-centered");
             modalContent.classList.add("modal-content");
             modalHeader.classList.add("modal-header");
-            title.classList.add("modal-title", "fs-5");
             priceModal.classList.add("product-price-modal");
             buttonX.classList.add("btn-close");
             modalBody.classList.add("modal-body");
